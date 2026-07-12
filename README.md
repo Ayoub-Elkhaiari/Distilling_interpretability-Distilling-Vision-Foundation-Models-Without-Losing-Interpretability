@@ -112,7 +112,7 @@ STUDENT_EPOCHS = 15
 ```
 
 ### 4) Outputs
-All tables and figures are written to `results/` and `figures/` and are also cached to a linked Google Drive folder: **[Drive folder link — add here]**
+All tables and figures are written to `results/` and `figures/` and are also cached to a linked Google Drive folder: **https://drive.google.com/drive/folders/1OYEBruVq-x-6ox2hWRrJcX10swVfltEC?usp=sharing**
 
 ---
 
