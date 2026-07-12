@@ -11,9 +11,9 @@
 
 **Research question:** does knowledge distillation preserve the interpretability of a vision foundation model's decisions, not just its accuracy?
 
-This project distills a frozen ViT-Small teacher into two compact student architectures on the Oxford-IIIT Pet dataset, then goes beyond standard accuracy/efficiency reporting to ask whether the student's explanations (Grad-CAM, SHAP) stay aligned with the teacher's own reasoning (attention rollout). It is built as an executable research notebook — sections, tables, and figures are structured to export directly into a short workshop-style manuscript.
+This project distills a frozen ViT-Small teacher into two compact student architectures on the Oxford-IIIT Pet dataset, then goes beyond standard accuracy/efficiency reporting to ask whether the student's explanations (Grad-CAM, SHAP) stay aligned with the teacher's own reasoning (attention rollout). It is built as an executable research notebook sections, tables, and figures are structured to export directly into a short workshop-style manuscript.
 
-> This is a first, single-seed, Colab-scale iteration. The pipeline is designed to scale to multi-seed, multi-architecture studies with additional compute — see [Limitations](#-limitations--future-work).
+> This is a first, single-seed, Colab-scale iteration. The pipeline is designed to scale to multi-seed, multi-architecture studies with additional compute see [Limitations](#-limitations--future-work).
 
 ---
 
@@ -132,13 +132,14 @@ Distillation did not produce a consistent accuracy gain over the from-scratch ba
 
 **Training curves:**
 
-| Compact CNN | MobileNetV2 |
-|---|---|
-| ![Compact CNN learning curves](figures/student_learning_curves_compact_cnn.png) | ![MobileNetV2 learning curves](figures/student_learning_curves_mobilenet_v2.png) |
+<img width="755" height="389" alt="image" src="https://github.com/user-attachments/assets/8079eec6-207f-472a-a2ed-f9939db680ba" />
+
+<img width="638" height="389" alt="image" src="https://github.com/user-attachments/assets/562a9bb7-7081-4e9c-b959-51f1d772444e" />
 
 **KD hyperparameter ablation (temperature × alpha):**
 
-![KD ablation heatmap](figures/kd_ablation_heatmap.png)
+<img width="454" height="389" alt="image" src="https://github.com/user-attachments/assets/d3591a40-e0a6-4897-9c42-40a157d80b02" />
+
 
 ---
 
@@ -166,9 +167,19 @@ Top-20% region overlap between teacher and student explanations is low overall (
 
 ### Example explanations
 
-| | |
-|---|---|
-| ![Compact CNN four-panel example](figures/four_panel_compact_cnn_disagreement_0.png) | ![MobileNetV2 four-panel example](figures/four_panel_mobilenet_v2_disagreement_0.png) |
+<img width="950" height="266" alt="image" src="https://github.com/user-attachments/assets/6a4fe45f-c738-4af2-afc3-6d01be540af9" />
+
+<img width="950" height="266" alt="image" src="https://github.com/user-attachments/assets/77573e88-5a9f-4983-bc3c-397878257911" />
+
+<img width="950" height="266" alt="image" src="https://github.com/user-attachments/assets/faf3374e-2fd1-4b97-b668-6ea2fd3b5f04" />
+
+<img width="950" height="266" alt="image" src="https://github.com/user-attachments/assets/cf105e5e-54ed-4d37-a692-09edba5c6ae4" />
+
+<img width="950" height="266" alt="image" src="https://github.com/user-attachments/assets/af3de38b-0072-4e62-9b97-5b9e46e9d2f1" />
+
+<img width="950" height="266" alt="image" src="https://github.com/user-attachments/assets/ac4da9b1-af73-4a7e-9717-3fb855259f77" />
+
+
 
 Each panel shows, left to right: original image, teacher attention rollout, student Grad-CAM, student SHAP overlay.
 
@@ -178,19 +189,14 @@ Each panel shows, left to right: original image, teacher attention rollout, stud
 
 - Results are reported for a **single seed** (42) due to Colab free-tier session limits; multi-seed variance estimation and significance testing are left for future work.
 - The KD hyperparameter ablation is intentionally small to fit free-tier runtime; selected temperature/alpha should be revalidated in a larger sweep.
-- Evaluated on a single fine-grained pet dataset — findings may not transfer directly to medical, biological, or underwater/marine domains.
+- Evaluated on a single fine-grained pet dataset findings may not transfer directly to medical, biological, or underwater/marine domains.
 - Attention rollout, Grad-CAM, SHAP, and deletion testing are proxy explanation methods; none guarantees alignment with human expert reasoning, and the teacher itself is not assumed to be perfectly interpretable.
-- Planned next steps (pending additional compute): multi-seed runs with statistical significance testing, a wider KD hyperparameter grid, additional teacher/student architectures, and — longer term — extension to domain-specific foundation models with human-expert evaluation of explanation quality.
+- Planned next steps (pending additional compute): multi-seed runs with statistical significance testing, a wider KD hyperparameter grid, additional teacher/student architectures, and longer term — extension to domain-specific foundation models with human-expert evaluation of explanation quality.
 
 ---
 
 ## 📌 Notes
 
-- All checkpoints, cached data, and raw outputs are stored in Google Drive rather than the repo to keep it lightweight: **[Drive folder link — add here]**
+- All checkpoints, cached data, and raw outputs are stored in Google Drive rather than the repo to keep it lightweight: **https://drive.google.com/drive/folders/1OYEBruVq-x-6ox2hWRrJcX10swVfltEC?usp=sharing**
 - This project was built as a portfolio piece demonstrating self-supervised/foundation-model compression and explainability techniques, intended to be extended into a fuller study.
 
-## 🎥 Demo / Notebook
-
-```md
-Notebook: distilling_interpretability.ipynb
-```
